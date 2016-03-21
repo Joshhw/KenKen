@@ -1,0 +1,55 @@
+  public boolean isValid() {
+    boolean test = false;
+    
+    if (this.operator == '+') {
+      int numCheck = 0;
+      // for each loops require compatible data type
+      for(Cell i: this.array) {
+        numCheck += i.getValue();
+      }
+      if (value == numCheck) {
+        return true;
+      }
+      return test;
+    }
+    // checks operator for minus symbol, then checks 2 numbers within array for match of value.
+    if (this.operator == '-') {
+      int numCheck = 0;
+      if (this.value == ((this.array[0].getValue()) - (this.array[1].getValue()))) {
+        return true;
+      } else if (this.value == ((this.array[1].getValue()) - (this.array[0].getValue()))) {
+        return true;
+      } else {
+        return test;
+      }
+    }
+    // checks operator for division symbol, then checks 2 numbers within array for match of value.
+    if (this.operator == '/') {
+      int numCheck = 0;
+      if (this.value == ((this.array[0].getValue()) / (this.array[1].getValue()))) {
+        return true;
+      } else if (this.value == ((this.array[1].getValue()) / (this.array[0].getValue()))) {
+        return true;
+      } else {
+        return test;
+      }
+    }
+    
+    if (this.operator == '*') {
+      int numCheck = 0;
+      for(Cell i: this.array) {
+        numCheck *= i.getValue();
+      }
+      if (this.value == numCheck) {
+        return true;
+      } else {
+        return test;
+      }
+    }
+    return test;
+  }
+      
+      
+    
+  
+  

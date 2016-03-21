@@ -1,0 +1,38 @@
+private class KenkenIterator implements Iterator<Cell[]> {
+  private int cursor;
+  private int cursorConstraint;
+  
+  public KenkenIterator() {
+    this.cursor = 0;
+    this.cursorConstraint = 0;
+  }
+
+  public boolean hasNext() {
+    return ((cursor < (3 * puzzle.length)) && ((cursorConstraint < puzzle.length)));
+  }
+  
+  public Cell[] next() {
+    Cell[] data = new Cell[puzzle.length];
+    if (cursor < puzzle.length) {
+      for (int i = 0; i < puzzle.length-1; i++) {
+        data[i] = puzzle[cursor][i];
+      }
+      cursor++;
+      return data;
+    } else if (cursor < 2 * puzzle.length) {
+      int j = 0;
+      for (int i = 0; i < puzzle.length - 1; i++) {
+        data[i] = puzzle[i][j];
+      }
+      cursor++;
+      return data;
+    } else if (cursor > (2 * puzzle.length) && (cursorConstraint < puzzle.length)) {
+      for (int i = 0; i < puzzle.length-1; i++) {
+        if (constraints[cursorConstraint].isValid()) {
+        data[i]=constraints[cursorConstraint];
+        } else {
+          data[i]=null;
+        }
+      cursorConstraint++;
+      return data;
+      }

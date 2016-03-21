@@ -1,0 +1,75 @@
+/** Constraint Class
+  * @author Joshua Decosta
+  * @version Sept 24th, 2014
+  */
+
+public class Constraint {
+  private int value;
+  private char operator;
+  private Cell[] array;
+  
+  public Constraint(int value, char operator, Cell...array) {
+    this.value = value;
+    this.operator = operator;
+    this.array = array;
+  }
+  
+  public boolean isValid() {
+    boolean test = false;
+    
+    if (this.operator == '+') {
+      int numCheck = 0;
+      // for each loops require compatible data type
+      for(int i = 0;i < this.array.length;i++)
+      // for(Cell i: this.array) {
+        numCheck += this.array[i].getValue();
+      if (this.value == numCheck) {
+        return true;
+      } else {
+        return test;
+      }
+    } else
+    // checks operator for minus symbol, then checks 2 numbers within array for match of value.
+    if (this.operator == '-') {
+      int numCheck = 0;
+      if (this.value == ((this.array[0].getValue()) - (this.array[1].getValue()))) {
+        test = true;
+        return test;
+      } else if (this.value == ((this.array[1].getValue()) - (this.array[0].getValue()))) {
+        test = true;
+        return test;
+      } else {
+        return test;
+      }
+    } else
+    // checks operator for division symbol, then checks 2 numbers within array for match of value.
+    if (this.operator == '/') {
+      int numCheck = 0;
+      if (this.value == ((this.array[0].getValue()) / (this.array[1].getValue()))) {
+        test = true;
+        return test;
+      } else if (this.value == ((this.array[1].getValue()) / (this.array[0].getValue()))) {
+        test = true;
+        return test;
+      } else {
+        return test;
+      }
+    } else
+    
+    if (this.operator == '*') {
+      int numCheck = 0;
+      for(int i = 0;i < this.array.length;i++) {
+     // for(Cell i: this.array) {
+        numCheck *= this.array[i].getValue();
+      }
+      if (this.value == numCheck) {
+        test = true;
+        return test;
+      } else {
+        return test;
+      }
+    } else {
+    return test;
+    }
+  }
+}

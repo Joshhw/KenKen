@@ -1,0 +1,45 @@
+ public boolean hasNext() {
+    return ((cursor < (2 * puzzle.length)) && ((cursorConstraint < constraints.length))); 
+  }
+  
+  public Cell[] next() {
+    Cell[] data = new Cell[puzzle.length]; //create Cell[]
+    if (cursor < puzzle.length) {  //if true its just row data
+      for (int i = 0; i < puzzle.length-1; i++) {
+        data[i] = puzzle[cursor][i];  //input row data to data array
+      }
+      cursor++; //increase cursor count for next row
+      return data;  //return row data
+    } else if (cursor < 2 * puzzle.length) { //check if cursor is bigger than 5, which means its a column 
+      for (int i = 0; i < puzzle.length - 1; i++) {
+          data[i] = puzzle[i][cursor-puzzle.length];  //makes cursor the correct value since the puzzle length should make cursor back to a 1-n value for iterating columns
+      }
+      cursor++; // increase cursor count for next column
+      return data; // return column
+    } else if (cursor - 2 * puzzle.length < constraints.length) { //brings cursor value back to normal range of 1-n
+      for (int i = 0; i < constraints.length; i++) {
+      if (constraints[cursorConstraint].isValid()) { //checks if the constraints Cell[] is valid
+        Cell a = new Cell(1);  //creates 3 cells of unique numbers
+        Cell b = new Cell(2);
+        Cell c = new Cell(3);
+        Cell[] array = new Cell[3]; // creates Cell[]
+          array[0]= a;  //inputs said numbers
+          array[1]=b;
+          array[2]=c;
+        data=array;  //returns those numbers to make a valid constraint
+        } else {
+          data[i]=null; //returns null to say isValid failed
+        }
+      cursorConstraint++;
+      return data;
+    }
+    }
+    return data;
+  }
+  
+    public void remove() throws UnsupportedOperationException {
+     throw new UnsupportedOperationException();
+    }
+  }
+}
+    

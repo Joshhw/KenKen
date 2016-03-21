@@ -1,0 +1,9 @@
+/**
+ * Cell class used to store single digit value of cells in KenKen puzzle
+ * @author Joshua Decosta
+ * 
+ */
+
+public class Cell {
+  private int value;
+  

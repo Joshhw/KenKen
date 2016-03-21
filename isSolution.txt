@@ -1,0 +1,25 @@
+  public boolean isSolution() {
+    boolean arrayCheck = true;
+    Iterator<Cell[]> itr = puzzle.iterator();
+    Cell[] array = null; //needed to do the string concatenation outside of the while loop
+    String print = "";   //for printing the array values
+    while(itr.hasNext()) {
+      array = itr.next();
+      for (int i = 0; i < array.length; i++) {  //makes a nested for loop to check all values against each other
+        for (int j = i+1; j<array.length; j++) {
+          if (array[i] != null && array[j] != null) {  //checks for a null value
+            if (array[i] == array[j]) {  //checks for same value
+              System.out.print("some array");  //prints value if found same (not correct, still checking this)
+              return false;  //returns false since test failed
+            }
+          }
+        }
+      }
+    }
+    for (int i = 0; i < array.length-1; i++) { //gets some values but I can't determine if its correct. it should work with array.length, but I keep
+      print += array[i].getValue() + " ";    //getting a nullPointerException when I remove the -1
+    }
+      
+    System.out.print(print);  //print array values
+    return arrayCheck;  //return true value
+  }

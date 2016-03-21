@@ -1,0 +1,12 @@
+Joshua Decosta UMS 01143329
+
+Why did you need to write a remove method in the KenkenIterator class even though your program never actually needs to remove any cells from the puzzle?
+
+The remove method was needed to complete the Interface. Because Iterator doesn’t provide a method body for hasNext, next, and remove. I had to create them myself to use it.
+ 
+Look at the files in your project directory.  Describe what is different about the .class file for the KenkenIterator class and explain the reason.
+
+the KenkenIterator class is the only class file with a main method. That is because it calls all the necessary files to validate the Kenken puzzle
+ 
+Explain how long it takes your isSolution method to run on different sized puzzles in terms of Big-O notation.  Assume that the number of constraints is a constant times the size of the puzzle (which is approximately true).
+n^2 max, sometimes n and sometimes n^3. The reason for the n^3 was to print the array values of a failed row/column. otherwise it ran at most n^2
